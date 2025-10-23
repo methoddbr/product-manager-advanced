@@ -4,4 +4,4 @@ export type CreateProductDto = {
   category: string;
 };
 
-export type UpdateProductDto = partial<CreateProductDto>;
+export type UpdateProductDto = Partial<CreateProductDto>;
