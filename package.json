@@ -16,7 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.18.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
@@ -24,12 +23,13 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@prisma/client": "^5.22.0",
     "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.9.1",
     "@types/supertest": "^6.0.3",
     "jest": "^30.2.0",
-    "prisma": "^6.18.0",
+    "prisma": "^5.22.0",
     "supertest": "^7.1.4",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
