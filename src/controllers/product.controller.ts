@@ -1,8 +1,8 @@
-import type { Request, Response, NextFunction } from "express";
+const { Request, Response, NextFunction } = require("express");
 const { ProductService } = require("../services/product.service");
 const {
   PrismaProductRepository,
-} = require("../repositories/prisma/product.repository");
+} = require("../repositories/prisma-product.repository");
 const {
   validateCreate,
   validateUpdate,
@@ -11,8 +11,12 @@ const {
 const repository = new PrismaProductRepository();
 const service = new ProductService(repository);
 
-class ProductController {
-  static async list(req: Request, res: Response, next: NextFunction) {
+export class ProductController {
+  static async list(
+    req: typeof Request,
+    res: typeof Response,
+    next: typeof NextFunction
+  ) {
     try {
       const products = await service.listAll();
       res.json(products);
@@ -21,7 +25,11 @@ class ProductController {
     }
   }
 
-  static async get(req: Request, res: Response, next: NextFunction) {
+  static async get(
+    req: typeof Request,
+    res: typeof Response,
+    next: typeof NextFunction
+  ) {
     try {
       const id = Number(req.params.id);
       const product = await service.getById(id);
@@ -31,7 +39,11 @@ class ProductController {
     }
   }
 
-  static async create(req: Request, res: Response, next: NextFunction) {
+  static async create(
+    req: typeof Request,
+    res: typeof Response,
+    next: typeof NextFunction
+  ) {
     try {
       const payload = validateCreate(req.body);
       const created = await service.create(payload);
@@ -41,7 +53,11 @@ class ProductController {
     }
   }
 
-  static async update(req: Request, res: Response, next: NextFunction) {
+  static async update(
+    req: typeof Request,
+    res: typeof Response,
+    next: typeof NextFunction
+  ) {
     try {
       const id = Number(req.params.id);
       const payload = validateUpdate(req.body);
@@ -52,7 +68,11 @@ class ProductController {
     }
   }
 
-  static async remove(req: Request, res: Response, next: NextFunction) {
+  static async remove(
+    req: typeof Request,
+    res: typeof Response,
+    next: typeof NextFunction
+  ) {
     try {
       const id = Number(req.params.id);
       await service.remove(id);

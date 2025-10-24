@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const ProductController = require("./controllers/product.comtroller");
+const { ProductController } = require("./controllers/product.controller");
+const { logger } = require("./middlewares/logger.middleware");
+const { errorHandler } = require("./middlewares/error.middleware");
 
 const app = express();
 app.use(cors());
@@ -13,6 +15,9 @@ app.get(
   (req: any, res: { json: (arg0: { status: string }) => any }) =>
     res.json({ status: "ok" })
 );
+
+app.use(logger);
+app.use(errorHandler);
 
 app.get("/products", ProductController.list);
 app.get("/products/:id", ProductController.get);

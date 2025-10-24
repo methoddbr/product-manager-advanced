@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { IProdcutRepository } from "./product.repository.interface";
-import { CreateProductDto, UpdateProductDto } from "../dto/product.dto";
-import { Product } from "../models/product.model";
+import type { IProdcutRepository } from "./product.repository.interface";
+import type { CreateProductDto, UpdateProductDto } from "../dto/product.dto";
+import type { Product } from "../models/product.model";
 
 const prisma = new PrismaClient();
 
